@@ -71,18 +71,22 @@ void main (void)
 	PORTBbits.RB4 	 = 1;
 	PORTBbits.RB5 	 = 1;
 
+	TRISCbits.TRISC0 = 0;
 	TRISCbits.TRISC1 = 0;
 	TRISCbits.TRISC2 = 0;
 	TRISCbits.TRISC3 = 0;
 
+	PORTCbits.RC0	 = 1;
 	PORTCbits.RC1 	 = 1;
 	PORTCbits.RC2 	 = 1;
 	PORTCbits.RC3 	 = 1;
 
+	TRISDbits.TRISD0 = 0;
 	TRISDbits.TRISD1 = 0;
 	TRISDbits.TRISD2 = 0;
 	TRISDbits.TRISD3 = 0;
 
+	PORTDbits.RD0 	 = 1;
 	PORTDbits.RD1 	 = 1;
 	PORTDbits.RD2 	 = 1;
 	PORTDbits.RD3 	 = 1;
@@ -122,13 +126,14 @@ void main (void)
 
 	while(1)
 	{
+// DM1
 		//============================
 		// row 1
 		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
 		PORTH = led_format(b0000_0000); 		// Green Color IO Pin - Byte
 
 		PORTJbits.RJ0 = 0; 	// Row On 
-		delay(10000);
+		delay(10);
 		PORTJbits.RJ0 = 1; 	// Row Off
 
 		//============================
@@ -137,7 +142,7 @@ void main (void)
 		PORTH = led_format(b0000_0000); 		// Green Color IO Pin - Byte
 
 		PORTJbits.RJ1 = 0; 	// Row On 
-		delay(10000);
+		delay(10);
 		PORTJbits.RJ1 = 1; 	// Row Off
 		
 		//==========================
@@ -146,7 +151,7 @@ void main (void)
 		PORTH = led_format(b0000_0001); 		// Green Color IO Pin - Byte
 
 		PORTJbits.RJ2 = 0; 	// Row On 
-		delay(10000);
+		delay(10);
 		PORTJbits.RJ2 = 1; 	// Row Off
 
 		//==========================
@@ -155,7 +160,7 @@ void main (void)
 
 		PORTH = led_format((b0000_0001 | b0000_0100 | b0000_1000 | b0001_0000 | b0010_0000 | b0100_0000));
 		PORTJbits.RJ3 = 0; 	// Row On 
-		delay(10000);
+		delay(10);
 		PORTJbits.RJ3 = 1; 	// Row Off
 
 		//==========================
@@ -164,7 +169,7 @@ void main (void)
 		PORTH = led_format((b0000_0001 | b0001_0000));
 
 		PORTJbits.RJ7 = 0; 	// Row On 
-		delay(10000);
+		delay(10);
 		PORTJbits.RJ7 = 1; 	// Row Off
 
 		//==========================
@@ -173,7 +178,7 @@ void main (void)
 		PORTH = led_format((b0000_0001 | b0001_0000));
 
 		PORTJbits.RJ6 = 0; 	// Row On 
-		delay(10000);
+		delay(10);
 		PORTJbits.RJ6 = 1; 	// Row Off
 
 		//==========================
@@ -182,7 +187,7 @@ void main (void)
 		PORTH = led_format((b0000_0001 | b0001_0000));
 
 		PORTJbits.RJ5 = 0; 	// Row On 
-		delay(10000);
+		delay(10);
 		PORTJbits.RJ5 = 1; 	// Row Off
 
 		//==========================
@@ -191,8 +196,285 @@ void main (void)
 		PORTH = led_format((b0000_0001 | b0000_0100 | b0000_1000 | b0001_0000 | b0010_0000 | b0100_0000));
 
 		PORTJbits.RJ4 = 0; 	// Row On 
-		delay(10000);
+		delay(10);
 		PORTJbits.RJ4 = 1; 	// Row Off
 
+// DM2
+		//============================
+		// row 1
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0000_0000); 		// Green Color IO Pin - Byte
+
+		PORTAbits.RA1 = 0; 	// Row On 
+		delay(10);
+		PORTAbits.RA1 = 1; 	// Row Off
+
+		//============================
+		// row 2
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0000_0100);
+
+		PORTAbits.RA2 = 0; 	// Row On 
+		delay(10);
+		PORTAbits.RA2 = 1; 	// Row Off
+		
+		//==========================
+		// row 3
+		//PORTE = led_format(b0000_000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b1000_0000 
+				| b0100_0000
+				| b0010_0000
+				| b0001_0000
+				| b0000_1000
+				| b0000_0100
+				| b0000_0010)); 		// Green Color IO Pin - Byte
+
+		PORTAbits.RA3 = 0; 	// Row On 
+		delay(10);
+		PORTAbits.RA3 = 1; 	// Row Off
+
+		//==========================
+		// row 4
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+
+		PORTH = led_format(
+				(b0010_0000
+				| b0000_0100)); 		// Green Color IO Pin - Byte
+
+		PORTAbits.RA4 = 0; 	// Row On 
+		delay(10);
+		PORTAbits.RA4 = 1; 	// Row Off
+		//==========================
+		// row 5
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b0010_0000
+				| b0000_0100)); 		// Green Color IO Pin - Byte
+
+		PORTCbits.RC2 = 0; 	// Row On 
+		delay(10);
+		PORTCbits.RC2 = 1; 	// Row Off
+
+		//==========================
+		// row 6
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b1000_0000 
+				| b0100_0000
+				| b0010_0000
+				| b0001_0000
+				| b0000_1000
+				| b0000_0100)); 		// Green Color IO Pin - Byte
+
+		PORTCbits.RC1 = 0; 	// Row On 
+		delay(10);
+		PORTCbits.RC1 = 1; 	// Row Off
+
+		//==========================
+		// row 7
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b0010_0000
+				| b0000_0100)); 		// Green Color IO Pin - Byte
+
+		PORTCbits.RC0 = 0; 	// Row On 
+		delay(10);
+		PORTCbits.RC0 = 1; 	// Row Off
+
+		//==========================
+		// row 8
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b0010_0000
+				| b0000_0100)); 		// Green Color IO Pin - Byte
+
+		PORTAbits.RA5 = 0; 	// Row On 
+		delay(10);
+		PORTAbits.RA5 = 1; 	// Row Off
+
+
+
+// DM3
+		//============================
+		// row 1
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b0001_0000
+				| b0000_0001)); 		// Green Color IO Pin - Byte
+
+		PORTBbits.RB1 = 0; 	// Row On 
+		delay(10);
+		PORTBbits.RB1 = 1; 	// Row Off
+
+		//============================
+		// row 2
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0001_0000); 		// Green Color IO Pin - Byte
+
+		PORTBbits.RB2 = 0; 	// Row On 
+		delay(10);
+		PORTBbits.RB2 = 1; 	// Row Off
+		
+		//==========================
+		// row 3
+		//PORTE = led_format(b0000_000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b0001_0000
+				| b0000_0100)); 		// Green Color IO Pin - Byte
+
+		PORTBbits.RB3 = 0; 	// Row On 
+		delay(10);
+		PORTBbits.RB3 = 1; 	// Row Off
+
+		//==========================
+		// row 4
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b0001_0000
+				| b0000_1000
+				| b0000_0001)); 		// Green Color IO Pin - Byte
+
+		PORTBbits.RB4 = 0; 	// Row On 
+		delay(10);
+		PORTBbits.RB4 = 1; 	// Row Off
+
+		//==========================
+		// row 5
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				( b0100_0000
+				| b0010_0000
+				| b0001_0000)); 		// Green Color IO Pin - Byte
+
+		PORTAbits.RA0 = 0; 	// Row On 
+		delay(10);
+		PORTAbits.RA0 = 1; 	// Row Off
+
+		//==========================
+		// row 6
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0000_0000); 		// Green Color IO Pin - Byte
+
+		PORTFbits.RF5 = 0; 	// Row On 
+		delay(10);
+		PORTFbits.RF5 = 1; 	// Row Off
+
+		//==========================
+		// row 7
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b0000_0100
+				| b0000_0010
+				| b0000_0001)); 		// Green Color IO Pin - Byte
+
+		PORTFbits.RF4 = 0; 	// Row On 
+		delay(10);
+		PORTFbits.RF4 = 1; 	// Row Off
+
+		//==========================
+		// row 8
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0000_0000); 		// Green Color IO Pin - Byte
+
+		PORTBbits.RB5 = 0; 	// Row On 
+		delay(10);
+		PORTBbits.RB5 = 1; 	// Row Off
+
+// DM4
+		//============================
+		// row 1
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b1000_0000
+				| b0100_0000
+				| b0010_0000
+				| b0001_0000
+				| b0000_1000
+				| b0000_0100)); 		// Green Color IO Pin - Byte
+
+		PORTDbits.RD0 = 0; 	// Row On 
+		delay(10);
+		PORTDbits.RD0 = 1; 	// Row Off
+
+		//============================
+		// row 2
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0010_0000); 		// Green Color IO Pin - Byte
+
+		PORTDbits.RD1 = 0; 	// Row On 
+		delay(10);
+		PORTDbits.RD1 = 1; 	// Row Off
+		
+		//==========================
+		// row 3
+		//PORTE = led_format(b0000_000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b0010_0000
+				| b0000_0100)); 		// Green Color IO Pin - Byte
+
+		PORTDbits.RD2 = 0; 	// Row On 
+		delay(10);
+		PORTDbits.RD2 = 1; 	// Row Off
+
+		//==========================
+		// row 4
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b1000_0000
+				| b0100_0000
+				| b0010_0000
+				| b0001_0000
+				| b0000_1000
+				| b0000_0100
+				| b0000_0010)); 		// Green Color IO Pin - Byte
+
+		PORTDbits.RD3 = 0; 	// Row On 
+		delay(10);
+		PORTDbits.RD3 = 1; 	// Row Off
+
+		//==========================
+		// row 5
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0010_0000); 		// Green Color IO Pin - Byte
+
+		PORTFbits.RF3 = 0; 	// Row On 
+		delay(10);
+		PORTFbits.RF3 = 1; 	// Row Off
+
+		//==========================
+		// row 6
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0010_0000); 		// Green Color IO Pin - Byte
+
+		PORTFbits.RF2 = 0; 	// Row On 
+		delay(10);
+		PORTFbits.RF2 = 1; 	// Row Off
+
+		//==========================
+		// row 7
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(
+				(b1000_0000
+				| b0100_0000
+				| b0010_0000
+				| b0001_0000
+				| b0000_1000
+				| b0000_0100
+				| b0000_0010
+				| b0000_0001)); 		// Green Color IO Pin - Byte
+		
+		PORTFbits.RF1 = 0; 	// Row On 
+		delay(10);
+		PORTFbits.RF1 = 1; 	// Row Off
+
+		//==========================
+		// row 8
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0000_0000); 		// Green Color IO Pin - Byte
+
+		PORTFbits.RF0 = 0; 	// Row On 
+		delay(10);
+		PORTFbits.RF0 = 1; 	// Row Off
 	}
 }
