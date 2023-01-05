@@ -1,6 +1,6 @@
 #include <p18f8722.h>  
 
-
+#define b0000_0000 0
 #define b0000_0001 1
 #define b0000_0010 2
 #define b0000_0100 4
@@ -23,6 +23,12 @@
 )
 
 #define led_format(input) ((~reverse(input)) ^ (~(0xff)))
+
+#define delay(amount) \
+for(Counter = 0; Counter < amount; Counter++) \
+{ \
+	DoSomething = 999; \
+}
 
 void main (void)
 {	
@@ -118,32 +124,75 @@ void main (void)
 	{
 		//============================
 		// row 1
-		//0x7F >> 0111 1111 >> 1000 0000 >> 0000 0001
-		PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
-
-		//0xBF >> 1011 1111 >> 0100 0000 >> 0000 0010
-		PORTH = led_format(b0000_0001); 		// Green Color IO Pin - Byte
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0000_0000); 		// Green Color IO Pin - Byte
 
 		PORTJbits.RJ0 = 0; 	// Row On 
-		for(Counter = 0; Counter<10000; Counter++)
-		{
-			DoSomething = 999;
-		}
+		delay(10000);
 		PORTJbits.RJ0 = 1; 	// Row Off
 
 		//============================
 		// row 2
-		PORTE = 0xBF; 		// Red Color   IO Pin - Byte
-		//0000 0010 <<
-		//0100 0000
-		//8421 8421
-		//1011 1111 >> BF
-		PORTH = 0xFF; 		// Green Color IO Pin - Byte
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0000_0000); 		// Green Color IO Pin - Byte
+
 		PORTJbits.RJ1 = 0; 	// Row On 
-		for(Counter = 0; Counter<10000; Counter++)
-		{
-			DoSomething = 999;
-		}
+		delay(10000);
 		PORTJbits.RJ1 = 1; 	// Row Off
+		
+		//==========================
+		// row 3
+		//PORTE = led_format(b0000_000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format(b0000_0001); 		// Green Color IO Pin - Byte
+
+		PORTJbits.RJ2 = 0; 	// Row On 
+		delay(10000);
+		PORTJbits.RJ2 = 1; 	// Row Off
+
+		//==========================
+		// row 4
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+
+		PORTH = led_format((b0000_0001 | b0000_0100 | b0000_1000 | b0001_0000 | b0010_0000 | b0100_0000));
+		PORTJbits.RJ3 = 0; 	// Row On 
+		delay(10000);
+		PORTJbits.RJ3 = 1; 	// Row Off
+
+		//==========================
+		// row 5
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format((b0000_0001 | b0001_0000));
+
+		PORTJbits.RJ7 = 0; 	// Row On 
+		delay(10000);
+		PORTJbits.RJ7 = 1; 	// Row Off
+
+		//==========================
+		// row 6
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format((b0000_0001 | b0001_0000));
+
+		PORTJbits.RJ6 = 0; 	// Row On 
+		delay(10000);
+		PORTJbits.RJ6 = 1; 	// Row Off
+
+		//==========================
+		// row 7
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format((b0000_0001 | b0001_0000));
+
+		PORTJbits.RJ5 = 0; 	// Row On 
+		delay(10000);
+		PORTJbits.RJ5 = 1; 	// Row Off
+
+		//==========================
+		// row 8
+		//PORTE = led_format(b0000_1000); 		// Red Color   IO Pin - Byte
+		PORTH = led_format((b0000_0001 | b0000_0100 | b0000_1000 | b0001_0000 | b0010_0000 | b0100_0000));
+
+		PORTJbits.RJ4 = 0; 	// Row On 
+		delay(10000);
+		PORTJbits.RJ4 = 1; 	// Row Off
+
 	}
 }
